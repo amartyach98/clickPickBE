@@ -7,7 +7,7 @@ const logger = require('pino')()
 /**
 @type - POST
 @route -  /api/seller/add
-@desc - route for add items to cart
+@desc - route for seller registration
 @access - PUBLIC */
 exports.addSeller = async (req, res) => {
   try {
@@ -53,7 +53,7 @@ exports.addSeller = async (req, res) => {
 /**
 @type - POST
 @route -  /api/seller/logIn
-@desc - route for add items to cart
+@desc - route for seller login
 @access - PUBLIC */
 exports.loginSeller = async (req, res) => {
   try {
@@ -115,7 +115,7 @@ exports.loginSeller = async (req, res) => {
 /**
 @type - POST
 @route -  /api/seller/logIn
-@desc - route for add items to cart
+@desc - route for seller change password
 @access - PRIVATE */
 exports.changePassword = async (req, res) => {
   console.log(req.params);
@@ -178,7 +178,7 @@ exports.changePassword = async (req, res) => {
 /**
 @type - POST
 @route -  /api/seller/logIn
-@desc - route for add items to cart
+@desc -  route for seller forgot password
 @access - PRIVATE */
 exports.forgotPassword = async (req, res) => {
   console.log(req.params);
@@ -242,7 +242,7 @@ exports.forgotPassword = async (req, res) => {
 /**
 @type - POST
 @route -  /api/seller/update
-@desc - route for add items to cart
+@desc - route for seller update account
 @access - PRIVATE */
 exports.updateSeller = async (req, res) => {
   console.log(req.params);
@@ -305,7 +305,7 @@ exports.updateSeller = async (req, res) => {
 /**
 @type - POST
 @route -  /api/seller/logIn
-@desc - route for add items to cart
+@desc - route for seller add product
 @access - PRIVATE */
 exports.addProducts = async (req, res) => {
   console.log(req.params);
