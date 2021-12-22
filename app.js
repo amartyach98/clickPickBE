@@ -2,7 +2,7 @@ require("dotenv").config();
 const mongoose = require("mongoose");
 const express = require("express");
 const app = express();
-
+const logger = require("pino")();
 const cookieParser = require("cookie-parser");
 const cors = require("cors");
 const path = require("path");
@@ -12,6 +12,7 @@ const bodyParser = require("body-parser");
 
 //Routes
 const sellerRoute = require("./routes/seller");
+const categoryRoute = require("./routes/category");
 
 
 //Middlewares
@@ -27,11 +28,12 @@ mongoose
     useUnifiedTopology: true,
   })
   .then(() => {
-    console.log("DB Connected");
+    logger.info("DB Connected");
   });
 
 //APIs
 app.use("/api", sellerRoute);
+app.use("/api", categoryRoute);
 
 //**Swagger configuration */
 const swaggerDefinition = {
@@ -73,6 +75,6 @@ const port = process.env.PORT || 8000;
 
 //starting server
 app.listen(port, () => {
-  console.log("Server is listening on port (http://localhost:%d)", port);
-  console.log("Swagger-ui is available on http://localhost:%d/api-docs", port);
+  logger.info("Server is listening on port (http://localhost:%d)", port);
+  logger.info("Swagger-ui is available on http://localhost:%d/api-docs", port);
 });
