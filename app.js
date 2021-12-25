@@ -13,6 +13,7 @@ const bodyParser = require("body-parser");
 //Routes
 const sellerRoute = require("./routes/seller");
 const categoryRoute = require("./routes/category");
+const FileUploadRoute = require("./routes/file");
 
 
 //Middlewares
@@ -34,6 +35,7 @@ mongoose
 //APIs
 app.use("/api", sellerRoute);
 app.use("/api", categoryRoute);
+app.use("/api", FileUploadRoute);
 
 //**Swagger configuration */
 const swaggerDefinition = {
@@ -63,6 +65,13 @@ const options = {
   swaggerDefinition,
   apis: [path.resolve(__dirname, "routes/*.js")],
 };
+
+//** Checking if jwt is present or not */
+if (!process.env.jwtPrivateKey) {
+  logger.debug("FATAL ERROR: jwtPrivateKey is not defined ");
+  process.exit(1);
+}
+
 
 const swaggerSpec = swaggerJSDoc(options);
 
