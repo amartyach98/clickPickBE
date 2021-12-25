@@ -40,7 +40,7 @@ router.post("/upload", verifyJWT_MW, uploadFile);
 //         axiosObj.data.pipe(res);
 //       })
 //       .catch((err) => {
-//         // console.log("/upload/getFile -> catch of get File", err)
+//         // logger.info("/upload/getFile -> catch of get File", err)
 //         return res
 //           .status(err.status || 500)
 //           .send({ error: err.error, result: err.result, message: err.message });

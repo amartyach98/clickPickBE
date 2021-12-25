@@ -4,6 +4,7 @@ var AWS = require("aws-sdk");
 var btoa = require("btoa");
 const { v1: uuidv1 } = require("uuid");
 const S3 = new AWS.S3();
+const logger = require("pino")();
 
 exports.uploadFile = async (req, res) => {
   const entity = req.user._id;
@@ -32,8 +33,8 @@ exports.uploadFile = async (req, res) => {
           message: "Message!!",
         });
       } else {
-        console.log(req.body, "L56>>>>");
-        console.log(req.files, req.file, "L78>>");
+        logger.info(req.body);
+        logger.info(req.files, req.file);
         // return s3 url here too for video?
         var updatedReqObject = req.files.map((x) => {
           let obj = x;
@@ -49,7 +50,7 @@ exports.uploadFile = async (req, res) => {
       }
     });
   } catch (e) {
-    console.log(e, "L89>>>");
+    logger.info(e, "L89>>>");
     return res.send({
       error: true,
       status: 400,
@@ -84,7 +85,7 @@ exports.deleteFile = async (req, res) => {
     { Bucket: process.env.BUCKET, Key: req.query.key },
     (err, data) => {
       if (err) {
-        console.log(err);
+        logger.info(err);
         return res.send({
           error: true,
           status: 400,
