@@ -14,6 +14,7 @@ const bodyParser = require("body-parser");
 const sellerRoute = require("./routes/seller");
 const categoryRoute = require("./routes/category");
 const FileUploadRoute = require("./routes/file");
+const ProductRoute = require("./routes/product");
 
 
 //Middlewares
@@ -36,6 +37,7 @@ mongoose
 app.use("/api", sellerRoute);
 app.use("/api", categoryRoute);
 app.use("/api", FileUploadRoute);
+app.use("/api", ProductRoute);
 
 //**Swagger configuration */
 const swaggerDefinition = {
