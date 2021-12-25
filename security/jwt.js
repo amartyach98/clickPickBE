@@ -4,11 +4,10 @@ const logger = require("pino")();
 
 exports.verifyJWT = function (token) {
   return new Promise(function (resolve, reject) {
-
+logger.info(token)
     if (token) {
       jwt.verify(token, process.env.jwtPrivateKey, async function (err, decoded) {
         if (err) {
-
           logger.info(err);
           reject({
             error: true,

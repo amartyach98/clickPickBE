@@ -53,6 +53,7 @@ router.put("/seller/forgotPassword", forgotPassword);
 router.get("/seller/all", getAll);
 
 module.exports = router;
+
 /**
  * @swagger
  * /api/seller/add:
