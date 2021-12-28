@@ -2,13 +2,9 @@ const jwtVerifier = require("../security/jwt");
 const logger = require("pino")();
 function verifyJWT_MW(req, res, next) {
   let token = req.headers.authorization;
-  let temp = null;
-  if (token.includes("Bearer")) {
-    temp = token.split(" ");
-  }
-  logger.info("jwt---------", temp ? temp : token);
+
   jwtVerifier
-    .verifyJWT(temp ? temp[1] : token)
+    .verifyJWT(token)
     .then((decodedToken) => {
       logger.info("jwt verified");
       req.user = decodedToken.result;

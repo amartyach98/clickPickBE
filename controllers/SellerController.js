@@ -73,6 +73,7 @@ exports.loginSeller = async (req, res) => {
     }
     const payload = {
       id: Seller._id,
+      role: Seller.role
     };
     jwt.sign(
       payload,

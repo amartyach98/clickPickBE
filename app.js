@@ -15,6 +15,7 @@ const sellerRoute = require("./routes/seller");
 const categoryRoute = require("./routes/category");
 const FileUploadRoute = require("./routes/file");
 const ProductRoute = require("./routes/product");
+const CustomerRoute = require("./routes/customer");
 
 
 //Middlewares
@@ -38,6 +39,7 @@ app.use("/api", sellerRoute);
 app.use("/api", categoryRoute);
 app.use("/api", FileUploadRoute);
 app.use("/api", ProductRoute);
+app.use("/api", CustomerRoute);
 
 //**Swagger configuration */
 const swaggerDefinition = {

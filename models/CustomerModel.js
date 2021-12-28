@@ -3,26 +3,30 @@ var Schema = mongoose.Schema;
 
 var customerSchema = Schema({
   customerEmail: {
-    type: String
+    type: String,
   },
   customerName: {
-    type: String
+    type: String,
   },
   customerPhNumber: {
-    type: String
+    type: String,
   },
-  customerGender:{
-      type:String
+  customerGender: {
+    type: String,
   },
- customerAddress:{
-     type:String
- },
- createdAt: {
-    type: String
+  customerPassword: {
+    type: String,
   },
-  updateAt:{
-      type:String
-  }
+  customerAddress: {
+    type: String,
+  },
+  createdAt: {
+    type: String,
+    default: Date.now(),
+  },
+  updateAt: {
+    type: String,
+  },
 });
 
 module.exports = mongoose.model("customer", customerSchema);
