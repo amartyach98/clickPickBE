@@ -7,12 +7,45 @@ var productSchema = Schema({
   description: {
     type: String,
   },
-  image: {
-    type: String,
+  isEnable: {
+    type: Boolean,
+    default: true,
   },
   stock: {
     type: Number,
   },
+  thumbnail: {
+    key: {
+      type: String,
+    },
+    name: {
+      type: String,
+    },
+    mimetype: {
+      type: String,
+    },
+    location: {
+      type: String,
+      default: null,
+    },
+  },
+  image: [
+    {
+      key: {
+        type: String,
+      },
+      name: {
+        type: String,
+      },
+      mimetype: {
+        type: String,
+      },
+      location: {
+        type: String,
+        default: null,
+      },
+    },
+  ],
   categoryId: [
     {
       type: Schema.ObjectId,
