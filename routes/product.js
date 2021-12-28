@@ -15,14 +15,14 @@ router.post("/product/add", verifyJWT_MW, addProduct);
 @route -  /api/product/update
 @desc - route for update product
 @access - PRIVATE */
-router.put("/product/update", verifyJWT_MW, updateProduct);
+router.put("/product/update/:productId", verifyJWT_MW, updateProduct);
 
 /**
 @type - DELETE
 @route -  /api/product/delete
 @desc - route for delete product
 @access - PRIVATE */
-router.delete("/product/delete", verifyJWT_MW, deleteProduct);
+router.delete("/product/delete/:productId", verifyJWT_MW, deleteProduct);
 
 
 /**
