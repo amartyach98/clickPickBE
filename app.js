@@ -40,6 +40,9 @@ app.use("/api", categoryRoute);
 app.use("/api", FileUploadRoute);
 app.use("/api", ProductRoute);
 app.use("/api", CustomerRoute);
+app.use("/", (req,res)=>{
+  return res.send("HI BUDDY!!")
+});
 
 //**Swagger configuration */
 const swaggerDefinition = {
