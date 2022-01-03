@@ -2,6 +2,7 @@ const bcrypt = require("bcrypt");
 const SellerModel = require("../models/SellerModel");
 const ProductModel = require("../models/ProductModel");
 const jwt = require("jsonwebtoken");
+const CustomerModel = require("../models/CustomerModel");
 const logger = require("pino")();
 
 exports.addProduct = async (req, res) => {
@@ -136,6 +137,51 @@ exports.deleteProduct = async (req, res) => {
       error: false,
       result: editedProduct,
       message: "Product Deleted",
+    });
+  } catch (err) {
+    logger.info(err);
+    return res.send({
+      error: true,
+      message: "Server Error",
+    });
+  }
+};
+
+exports.getAll = async (req, res) => {
+  try {
+    let user = null;
+    if (req.user.role === "customer") {
+      user = await CustomerModel.find(req.user._id);
+    } else if (req.user.role === "seller" || req.user.role === "admin") {
+      user = await SellerModel.find(req.user._id);
+    }
+
+    if (!user) {
+      return res.send({
+        error: true,
+        message: "Invalid user",
+      });
+    }
+    let { page, size, sort } = req.query;
+
+    // If the page is not applied in query
+    if (!page) {
+      // Make the Default value one
+      page = 1;
+    }
+
+    if (!size) {
+      size = 10;
+    }
+    const limit = parseInt(size);
+
+    const allProducts = await ProductModel.find({})
+      .sort({ createdAt: -1 })
+      .limit(limit);
+    return res.send({
+      error: false,
+      result: allProducts,
+      message: "Products found",
     });
   } catch (err) {
     logger.info(err);
