@@ -29,6 +29,9 @@ var productSchema = Schema({
       default: null,
     },
   },
+  price:{
+    type: String
+  },
   image: [
     {
       key: {
@@ -64,5 +67,6 @@ var productSchema = Schema({
     type: String,
   },
 });
+
 
 module.exports = mongoose.model("products", productSchema);

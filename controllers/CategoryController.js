@@ -46,25 +46,8 @@ exports.addCategory = async (req, res) => {
 
 exports.getCategoryById = async (req, res) => {
   try {
-    const seller = await SellerModel.findOne({
-      _id: req.user._id,
-      isEnable: true
-    });
-    if (!seller) {
-      return res.send({
-        error: true,
-        return: {},
-        message: "Invalid user",
-      });
-    }
-    if (seller.role !== "ADMIN") {
-      return res.send({
-        error: true,
-        return: {},
-        message: "You are not authorize for this action",
-      });
-    } else {
-      const category = await CategoryModel.findById(req.params.categoryId);
+    
+    const category = await CategoryModel.findById(req.params.categoryId);
       if (!category) {
         return res.send({
           error: true,
@@ -77,7 +60,6 @@ exports.getCategoryById = async (req, res) => {
           message: "Category Found",
         });
       }
-    }
   } catch (err) {
     logger.info(err);
     return res.send({

@@ -11,6 +11,11 @@ var customerSchema = Schema({
   customerPhNumber: {
     type: String,
   },
+  role: {
+    type: String,
+    default: "customer",
+  },
+
   customerGender: {
     type: String,
   },

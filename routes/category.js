@@ -20,7 +20,7 @@ router.post("/category/add", verifyJWT_MW, addCategory);
 @route -  /api/category/getBycategoryId
 @desc - route for get category by id
 @access - PRIVATE */
-router.get("/category/getBycategoryId/:categoryId", verifyJWT_MW, getCategoryById);
+router.get("/category/getBycategoryId/:categoryId", getCategoryById);
 
 /**
 @type - GET
