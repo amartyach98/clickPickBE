@@ -1,4 +1,5 @@
 require("dotenv").config();
+require("dotenv").config();
 const mongoose = require("mongoose");
 const express = require("express");
 const app = express();
@@ -16,6 +17,7 @@ const categoryRoute = require("./routes/category");
 const FileUploadRoute = require("./routes/file");
 const ProductRoute = require("./routes/product");
 const CustomerRoute = require("./routes/customer");
+const CartRoute = require("./routes/cart");
 
 
 //Middlewares
@@ -40,6 +42,7 @@ app.use("/api", categoryRoute);
 app.use("/api", FileUploadRoute);
 app.use("/api", ProductRoute);
 app.use("/api", CustomerRoute);
+app.use("/api", CartRoute);
 
 
 //**Swagger configuration */

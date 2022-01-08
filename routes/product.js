@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const { addProduct,updateProduct,deleteProduct,addImage,deleteImage, getAll } = require("../controllers/ProductController");
+const { addProduct,updateProduct,deleteProduct,addImage,deleteImage, getByCategoryId,getAll } = require("../controllers/ProductController");
 const { verifyJWT_MW } = require("../middlewares/jwtVerifier");
 
 /**
@@ -45,5 +45,12 @@ router.put("/product/deleteImage", verifyJWT_MW, deleteImage);
 @desc - route for get all products
 @access - PRIVATE */
 router.get("/product/all", verifyJWT_MW, getAll);
+
+/**
+@type - PUT
+@route -  /api/product/:categoryId
+@desc - route for get products by categoryId
+@access - PRIVATE */
+router.get("/product/:categoryId", verifyJWT_MW, getByCategoryId);
 
 module.exports = router;

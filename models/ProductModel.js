@@ -29,6 +29,9 @@ var productSchema = Schema({
       default: null,
     },
   },
+  price:{
+    type: String
+  },
   image: [
     {
       key: {
